@@ -1,12 +1,10 @@
 import React from 'react';
-import Hello from './Hello';
-import './App.css';
-import Wrapper from './components/Wrapper';
-import Counter from './components/Counter';
+import InputSample from './components/InputSample';
+
 
 function App() {
   return (
-    <Counter /> 
+    <InputSample />
   );
 }
 
