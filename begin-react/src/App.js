@@ -69,7 +69,7 @@ function App() {
       ? {...user, active: !user.active}
       : user
     ))
-  }
+  };
 
   return (
     <>
