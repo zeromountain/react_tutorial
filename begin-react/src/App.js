@@ -1,4 +1,4 @@
-import React, { useRef, useState, useMemo } from 'react';
+import React, { useRef, useState, useMemo, useCallback } from 'react';
 import CreateUser from './components/CreatUser';
 import UserList from './components/UserList';
 
@@ -16,13 +16,6 @@ function App() {
   });
 
   const { username, email } = inputs;
-  const onChange = e => {
-    const { name, value} = e.target;
-    setInputs({
-      ...inputs,
-      [ name ]: value
-    })
-  };
 
   const [ users, setUsers ] = useState([
     {
@@ -47,7 +40,9 @@ function App() {
 
   const nextId = useRef(4);
 
-  const onCreate = () => {
+  // EVENT function
+
+  const onCreate = useCallback(() => {
     const user = {
       id: nextId.current,
       username,
@@ -62,19 +57,27 @@ function App() {
     })
     console.log(nextId.current);
     nextId.current += 1;
-  };
+  }, [username, email, users]);
 
-  const onRemove = id => {
+  const onChange = useCallback(e => {
+    const { name, value} = e.target;
+    setInputs({
+      ...inputs,
+      [ name ]: value
+    })
+  }, [inputs]);
+
+  const onRemove = useCallback(id => {
     setUsers(users.filter(user => user.id !== id));
-  };
+  }, [users]);
 
-  const onToggle = id => {
+  const onToggle = useCallback(id => {
     setUsers(users.map(
       user => user.id === id 
       ? {...user, active: !user.active}
       : user
     ))
-  };
+  }, [users]);
 
   // if users chagnge, useMemo function is excuted
   const count = useMemo(() => countActiveUsers(users), [users]);
