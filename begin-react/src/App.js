@@ -50,14 +50,14 @@ function App() {
     };
     // existing element of array maintain and add new element
     // setUsers([...users, user]);
-    setUsers(users.concat(user));
+    setUsers(users => users.concat(user));
     setInputs({
       username: '',
       email: ''
     })
     console.log(nextId.current);
     nextId.current += 1;
-  }, [username, email, users]);
+  }, [username, email]);
 
   const onChange = useCallback(e => {
     const { name, value} = e.target;
@@ -68,16 +68,16 @@ function App() {
   }, [inputs]);
 
   const onRemove = useCallback(id => {
-    setUsers(users.filter(user => user.id !== id));
-  }, [users]);
+    setUsers(users => users.filter(user => user.id !== id));
+  }, []);
 
   const onToggle = useCallback(id => {
-    setUsers(users.map(
+    setUsers(users => users.map(
       user => user.id === id 
       ? {...user, active: !user.active}
       : user
     ))
-  }, [users]);
+  }, []);
 
   // if users chagnge, useMemo function is excuted
   const count = useMemo(() => countActiveUsers(users), [users]);
