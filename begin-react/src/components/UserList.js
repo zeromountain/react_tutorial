@@ -28,7 +28,7 @@ function UserList ({ users, onRemove, onToggle }) {
     <div>
       {/* <User user={users[0]} />
       <User user={users[1]} />
-      <User user={users[2]} /> */}
+      <User user={users[2]} /> */}        
       {
         users.map(
           user => (
