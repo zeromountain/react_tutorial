@@ -3,14 +3,16 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import ContextSample from './components/contextSample';
+import Hello from './Hello';
+// import ContextSample from './components/contextSample';
 // import Counter from './components/Counter';
 
 ReactDOM.render(
   <React.StrictMode>
     {/* <ContextSample /> */}
-    <App />
+    {/* <App /> */}
     {/* <Counter /> */}
+    <Hello name="react" />
   </React.StrictMode>,
   document.getElementById('root')
 );
