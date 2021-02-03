@@ -8,8 +8,8 @@ import ContextSample from './components/contextSample';
 
 ReactDOM.render(
   <React.StrictMode>
-    <ContextSample />
-    {/* <App /> */}
+    {/* <ContextSample /> */}
+    <App />
     {/* <Counter /> */}
   </React.StrictMode>,
   document.getElementById('root')
